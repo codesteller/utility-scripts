@@ -42,14 +42,14 @@ sudo apt -y install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen
 
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout 4.1.1
+git checkout 4.1.2
 cd ..
 
 cd "$cwd"
  
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib 
-git checkout 4.1.1
+git checkout 4.1.2
 cd ..
 
 cd "$cwd"
@@ -58,7 +58,7 @@ cd opencv
 mkdir build
 cd build
 
-cmake -DCMAKE_BUILD_TYPE=RELEASE -DENABLE_PRECOMPILED_HEADERS=OFF -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -DBUILD_EXAMPLES=ON -DWITH_CUDA=ON -DCMAKE_INSTALL_PREFIX=../../../install/ ..
+cmake -DCMAKE_BUILD_TYPE=RELEASE -DENABLE_PRECOMPILED_HEADERS=OFF -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -DBUILD_EXAMPLES=ON -DWITH_CUDA=ON -DCMAKE_INSTALL_PREFIX=../../install/ ..
 make -j$(nproc)
 make install
 

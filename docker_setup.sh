@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+
 # Save current working directory
 cwd=$(pwd)
 
