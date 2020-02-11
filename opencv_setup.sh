@@ -48,7 +48,8 @@ cd ..
 cd "$cwd"
  
 git clone https://github.com/opencv/opencv_contrib.git
-cd opencv_contrib 4.1.1
+cd opencv_contrib 
+git checkout 4.1.1
 cd ..
 
 cd "$cwd"
