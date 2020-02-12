@@ -15,9 +15,9 @@ pip install -U --user keras_preprocessing --no-deps
 sudo apt install g++ unzip zip
 sudo apt-get install openjdk-11-jdk
 
-wget https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.1-installer-linux-x86_64.sh
-chmod +x bazel-0.24.1-installer-linux-x86_64.sh 
-./bazel-0.24.1-installer-linux-x86_64.sh --user
+# wget https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.1-installer-linux-x86_64.sh
+#chmod +x bazel-0.24.1-installer-linux-x86_64.sh 
+#./bazel-0.24.1-installer-linux-x86_64.sh --user
 
 export PATH="$PATH:$HOME/bin"
 
@@ -28,5 +28,5 @@ cd tensorflow
 git checkout r1.14
 
 ./configure
-bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+bazel build --config=mkl --config=noignite --config=nokafka --config=nonccl --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 ./bazel-bin/tensorflow/tools/pip_package/build_pip_package ./pip_package/tensorflow_pkg --gpu
