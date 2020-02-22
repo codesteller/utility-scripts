@@ -35,6 +35,11 @@ sudo systemctl enable docker
 
 docker --version
 
+### Restart docker service, else following error may come
+## docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].
+## ERRO[0028] error waiting for container: context canceled
+sudo systemctl restart docker
+
 #### Test nvidia-smi with the latest official CUDA image
-sudo docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
+sudo docker run --gpus all nvidia/cuda:10.2-base nvidia-smi
 
