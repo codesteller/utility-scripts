@@ -17,7 +17,7 @@ chmod +x bazel-0.24.1-installer-linux-x86_64.sh
 ./bazel-0.24.1-installer-linux-x86_64.sh --user
 
 # Install CUDNN
-wget https://developer.download.nvidia.com/compute/machine-learning/cudnn/secure/7.6.5.32/Production/10.2_20191118/cudnn-10.2-linux-x64-v7.6.5.32.tgz?cYGns-qA6DjyhIGnobmyWYN4AatcWXgZ3QfwivlvD8DfvRZ5vjaPqcd-XKQ3LPwTbAZuyuLQXKEqZtSXNO8A8q1Mj-o6X601GsJPDL3hago2GU0sItU628KZ2MDGk-PrF5LOYCbqI4TqOxcZS85MVWdwA8TBqChYhrm-iiNnYnZ-QMVWJGb0RXPHch0o6GDexJGnPUpdgtKYUWIIMlH0VoQiuxy6zu-tyA
+# Download CUDNN - wget https://developer.download.nvidia.com/compute/machine-learning/cudnn/secure/7.6.5.32/Production/10.2_20191118/cudnn-10.2-linux-x64-v7.6.5.32.tgz?cYGns-qA6DjyhIGnobmyWYN4AatcWXgZ3QfwivlvD8DfvRZ5vjaPqcd-XKQ3LPwTbAZuyuLQXKEqZtSXNO8A8q1Mj-o6X601GsJPDL3hago2GU0sItU628KZ2MDGk-PrF5LOYCbqI4TqOxcZS85MVWdwA8TBqChYhrm-iiNnYnZ-QMVWJGb0RXPHch0o6GDexJGnPUpdgtKYUWIIMlH0VoQiuxy6zu-tyA
 tar -xzvf cudnn-10.2-linux-x64-v7.6.5.32.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
