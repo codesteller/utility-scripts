@@ -3,3 +3,5 @@ sudo apt-get install gnome-shell-extensions
 
 # Install ARC Dark Theme
 sudo apt install arc-theme
+
+# Reboot and launch gnome-tweaks to change to a dark theme
