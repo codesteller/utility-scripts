@@ -15,11 +15,14 @@ pip install -U --user keras_preprocessing --no-deps
 sudo apt install g++ unzip zip
 sudo apt-get install openjdk-11-jdk
 
+# Install BAZEL manually and add to path
 # wget https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.1-installer-linux-x86_64.sh
 #chmod +x bazel-0.24.1-installer-linux-x86_64.sh 
 #./bazel-0.24.1-installer-linux-x86_64.sh --user
-
 export PATH="$PATH:$HOME/bin"
+
+# Export TensorRT install path if you need TF to compile with TensorRT
+export TENSORRT_INSTALL_PATH=$HOME/apsoft/nvidia/tensorrt/TensorRT-7.0.0.11
 
 # Build Tensorflow
 
