@@ -2,7 +2,7 @@
 # Save current working directory
 cwd=$(pwd)
 
-sudo apt -y update
+sudo apt update
 sudo apt -y upgrade
 
 # Install packages to allow apt to use a repository over HTTPS
