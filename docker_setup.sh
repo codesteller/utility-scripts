@@ -40,6 +40,10 @@ docker --version
 ## ERRO[0028] error waiting for container: context canceled
 sudo systemctl restart docker
 
+# Add to sudoer's list
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
 #### Test nvidia-smi with the latest official CUDA image
 sudo docker run --gpus all nvidia/cuda:10.2-base nvidia-smi
 
