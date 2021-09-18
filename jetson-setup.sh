@@ -2,6 +2,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install python3-dev python3-pip python3-venv
 sudo -H pip3 install -U jetson-stats
 
+################ REBOOT REQUIRED HERE ##############
+
 echo "export PATH=/usr/src/tensorrt/bin:$PATH" >> $HOME/.bashrc
 # TensorRT Samples stored in /opt
 
