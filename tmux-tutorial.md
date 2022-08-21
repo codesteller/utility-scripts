@@ -1,7 +1,8 @@
 # Tmux Tutorial
 
 * Start Tmux Session 
-  ``` tmux
+  ``` 
+  tmux
   ```
 2. Split pane vertical - ctrl+b -> %
 3. Split pane horizontal - ctrl+b -> "
