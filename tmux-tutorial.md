@@ -1,6 +1,6 @@
 # Tmux Tutorial
 
-1. Start Tmux Session - tmux
+* Start Tmux Session ```tmux'''
 2. Split pane vertical - ctrl+b -> %
 3. Split pane horizontal - ctrl+b -> "
 4. Move between panes - ctrl+b -> right/left/up/down arrow
