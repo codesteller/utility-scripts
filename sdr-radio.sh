@@ -10,3 +10,20 @@ echo "deb https://downloads.osmocom.org/packages/osmocom:/latest/Debian_11/ ./" 
 sudo apt-get update
 sudo apt-get upgrade
 
+sudo apt install libspdlog-dev
+git clone https://github.com/osmocom/gr-osmosdr.git
+cd gr-osmosdr
+mkdir build && cd build
+cmake ..
+
+# Install SoapySDR
+git clone https://github.com/pothosware/SoapySDR.git
+cd SoapySDR
+mkdir build
+cd build
+cmake ..
+make -j4
+sudo make install
+sudo ldconfig #needed on debian systems
+SoapySDRUtil --info
+
