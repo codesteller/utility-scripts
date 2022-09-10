@@ -42,14 +42,14 @@ sudo apt -y install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen
 
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout 4.5.1
+git checkout 4.5.3
 cd ..
 
 cd "$cwd"
  
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib 
-git checkout 4.5.1
+git checkout 4.5.3
 cd ..
 
 cd "$cwd"
