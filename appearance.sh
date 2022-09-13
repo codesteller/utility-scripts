@@ -13,3 +13,8 @@ sudo apt install arc-theme
 # I prefer the default desktop which is GNOME-DESKTOP. 
 # However, there are few others as mentioned in
 # https://linuxconfig.org/8-best-ubuntu-desktop-environments-18-04-bionic-beaver-linux
+
+# Install Icon Pack - 
+# I like Candy Icon & Papirus 
+# Download from https://www.gnome-look.org/browse/
+
