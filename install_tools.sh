@@ -17,3 +17,9 @@ sudo apt install apt-transport-https -y
 sudo apt update && sudo apt upgrade -y 
 sudo apt install code -y # or code-insiders
 
+# Install NGC
+mkdir -p ~/Apsoft/nvidia
+cd ~/Apsoft/nvidia/
+wget --content-disposition https://ngc.nvidia.com/downloads/ngccli_linux.zip && unzip ngccli_linux.zip && chmod u+x ngc-cli/ngc
+echo "export PATH=\"\$PATH:$(pwd)/ngc-cli\"" >> ~/.bashrc && source ~/.bashrc
+ngc config set
