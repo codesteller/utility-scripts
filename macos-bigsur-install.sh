@@ -1,3 +1,9 @@
+#############
+# Deprecated - Check new setup_macos.sh
+#############
+
+
+
 # Install HomeBrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 # Install Tesseract
