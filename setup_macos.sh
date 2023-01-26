@@ -8,6 +8,7 @@ brew install --cask sublime-text
 brew install --cask tabby
 brew install --cask visual-studio-code
 brew install imagemagick
+brew install cmake 
 brew install wget
 
 # Install Mambaforge Python -
