@@ -10,6 +10,7 @@ brew install --cask visual-studio-code
 brew install imagemagick
 brew install cmake 
 brew install wget
+brew install zlib zlib-ng
 
 # Install Mambaforge Python -
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
