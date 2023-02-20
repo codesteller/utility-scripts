@@ -1,4 +1,8 @@
 
+# ---------------
+# For POP OS - Look into this for troubleshooting - https://gist.github.com/kuang-da/2796a792ced96deaf466fdfb7651aa2e
+# ---------------
+
 # Save current working directory
 cwd=$(pwd)
 
