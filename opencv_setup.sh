@@ -59,8 +59,32 @@ mkdir build
 cd build
 
 # Mention -DPYTHON3_EXECUTABLE=/home/codesteller/apsoft/anaconda3/envs/py35dev/bin/python when multiple python3 present
-cmake -DCMAKE_BUILD_TYPE=RELEASE -DENABLE_PRECOMPILED_HEADERS=OFF -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -DBUILD_EXAMPLES=ON -DWITH_CUDA=ON -DCMAKE_INSTALL_PREFIX=../../install/ ..
+# cmake -DCMAKE_BUILD_TYPE=RELEASE -DENABLE_PRECOMPILED_HEADERS=OFF -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -DBUILD_EXAMPLES=ON -DWITH_CUDA=ON -DCMAKE_INSTALL_PREFIX=../../install/ ..
 # cmake -DCMAKE_BUILD_TYPE=RELEASE -DENABLE_PRECOMPILED_HEADERS=OFF -DWITH_QT=ON -DWITH_OPENGL=ON -DWITH_TBB=ON -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -DBUILD_EXAMPLES=ON -DWITH_CUDA=ON -DCMAKE_INSTALL_PREFIX=../../install/ -D PYTHON3_EXECUTABLE=/home/codesteller/apsoft/anaconda3/envs/py35dev/bin/python ..
+cmake \
+    -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=../../cv2_4.6 \
+    -D INSTALL_PYTHON_EXAMPLES=ON \
+    -D INSTALL_C_EXAMPLES=ON \
+    -D WITH_TBB=ON \
+    -D WITH_CUDA=ON \
+    -D BUILD_opencv_cudacodec=ON \
+    -D ENABLE_FAST_MATH=1 \
+    -D CUDA_FAST_MATH=1 \
+    -D WITH_CUBLAS=1 \
+    -D WITH_V4L=ON \
+    -D WITH_QT=ON \
+    -D WITH_OPENGL=ON \
+    -D WITH_GSTREAMER=ON \
+    -D OPENCV_GENERATE_PKGCONFIG=ON \
+    -D OPENCV_PC_FILE_NAME=opencv.pc \
+    -D OPENCV_ENABLE_NONFREE=ON \
+    -D OPENCV_PYTHON3_INSTALL_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
+    -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+    -D PYTHON_EXECUTABLE=$(which python3) \
+    -D BUILD_EXAMPLES=ON ..
+
+
 make -j$(nproc)
 make install
 
