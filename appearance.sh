@@ -1,3 +1,6 @@
+# Profiling and System Debuging tools
+sudo apt install neofetch btop tmux 
+
 sudo apt install gnome-shell-extensions
 #sudo apt-get install gnome-shell-extensions
 
