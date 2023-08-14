@@ -63,5 +63,9 @@ sudo chmod a+r /usr/local/cuda-11.8/lib64/libcudnn*
 nvidia-smi
 nvcc -V
 
+# Install Mambaforge
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+sh Mambaforge-Linux-x86_64.sh -b -p $(HOME)/Apsoft/mambaforge/
+
 # install Pytorch (an open source machine learning framework)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
