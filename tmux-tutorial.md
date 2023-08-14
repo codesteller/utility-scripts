@@ -13,3 +13,5 @@
 * List all Sessions - `tmux ls`
 * Naming and creating a session - `tmux new -s <Window Name>`
 * Killing session - `tmux kill-session -t <Window Name/Number>`
+* Broadcast - `ctrl+b -> :` then type `setw synchronize-panes on/off`
+* 
