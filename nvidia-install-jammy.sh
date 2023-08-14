@@ -65,7 +65,8 @@ nvcc -V
 
 # Install Mambaforge
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
-sh Mambaforge-Linux-x86_64.sh -b -p $(HOME)/Apsoft/mambaforge/
+sh Mambaforge-Linux-x86_64.sh -b -p $(HOME)/Apsoft/mambaforge
+source ~/Apsoft/mambaforge/bin/activate
 
 # install Pytorch (an open source machine learning framework)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
