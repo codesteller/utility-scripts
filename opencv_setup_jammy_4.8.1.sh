@@ -93,3 +93,7 @@ cmake \
 
 make -j$(nproc)
 sudo make install
+
+# Now Add the Paths
+# export LD_LIBRARY_PATH=/opt/opencv/4.8.1/install/lib:$LD_LIBRARY_PATH
+# export PYTHONPATH=/optopencv/4.8.1/install/lib/python3.x/site-packages:$PYTHONPATH"
