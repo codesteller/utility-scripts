@@ -85,8 +85,8 @@ cmake \
     -D OPENCV_PC_FILE_NAME=opencv.pc \
     -D OPENCV_ENABLE_NONFREE=ON \
     -D PYTHON_INCLUDE_DIR=$(python -c "import sysconfig; print(sysconfig.get_path('include'))")  \
-	  -D PYTHON_LIBRARY=$(python -c "import sysconfig; print(sysconfig.get_config_var('LIBDIR'))") \
-	  -D OPENCV_PYTHON3_INSTALL_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
+    -D PYTHON_LIBRARY=$(python -c "import sysconfig; print(sysconfig.get_config_var('LIBDIR'))") \
+    -D OPENCV_PYTHON3_INSTALL_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
     -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
     -D PYTHON_EXECUTABLE=$(which python3) \
     -D BUILD_EXAMPLES=ON ..
