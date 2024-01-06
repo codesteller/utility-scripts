@@ -1,4 +1,4 @@
-# Save current working directory
+sure numpy is already installer# Save current working directory
 cv_version = "4.8.1"
 
 cwd=$(pwd)
@@ -65,7 +65,8 @@ cd opencv
 mkdir build
 cd build
 
-# If Building with conda environment please activate the environment now
+# If Building with conda environment please activate the environment now; 
+# Make sure numpy is installed in the environment
 cmake \
     -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=/opt/opencv/4.8.1 \
