@@ -1,5 +1,5 @@
-sure numpy is already installer# Save current working directory
-cv_version = "4.8.1"
+# Save current working directory
+cv_version="4.8.1"
 
 cwd=$(pwd)
 
