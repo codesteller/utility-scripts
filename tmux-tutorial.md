@@ -1,5 +1,16 @@
 # Tmux Tutorial
 
+## Edit tmux config:
+Open tmux config file `~/.tmux.conf ` aand add following lines
+```
+touch ~/.tmux.conf
+echo "set -g status-bg cyan" >> ~/.tmux.conf
+echo "set -g mouse on" >> ~/.tmux.conf
+
+```
+
+
+
 * Start Tmux Session - `tmux`
 * Split pane vertical - `ctrl+b -> %`
 * Split pane horizontal - `ctrl+b -> "`
