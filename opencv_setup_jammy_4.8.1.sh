@@ -15,7 +15,7 @@ sudo apt -y install software-properties-common
 sudo apt -y update
 
 sudo apt -y install libtiff-dev
- 
+sudo apt-get install libomp-dev
 sudo apt -y install libavcodec-dev libavformat-dev libswscale-dev libdc1394-dev
 sudo apt -y install libxine2-dev libv4l-dev
 cd /usr/include/linux
@@ -70,6 +70,7 @@ cmake \
     -D INSTALL_PYTHON_EXAMPLES=ON \
     -D INSTALL_C_EXAMPLES=ON \
     -D WITH_TBB=ON \
+    -D WITH_OPENMP=ON \
     -D WITH_CUDA=ON \
     -D BUILD_opencv_cudacodec=ON \
     -D ENABLE_FAST_MATH=1 \
