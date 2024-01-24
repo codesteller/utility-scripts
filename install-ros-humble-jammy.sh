@@ -17,6 +17,9 @@ sudo apt update
 sudo apt install ros-humble-desktop-full python3-argcomplete python-catkin-tools -y
 sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 
+# ROSDEP
+sudo rosdep init
+rosdep update
 
 # Optional
 sudo apt install ros-humble-depthai-examples ros-humble-depthai-ros ros-humble-ublox ros-dev-tools ros-humble-velodyne 
