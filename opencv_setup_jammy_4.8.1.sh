@@ -36,6 +36,8 @@ sudo apt -y install libprotobuf-dev protobuf-compiler
 sudo apt -y install libgoogle-glog-dev libgflags-dev
 sudo apt -y install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen
 
+# Install Java
+sudo apt -y install default-jre default-jdk 
 # Setup Opencv
 
 git clone https://github.com/opencv/opencv.git
