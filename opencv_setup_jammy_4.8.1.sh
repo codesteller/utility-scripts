@@ -15,7 +15,7 @@ sudo apt -y install software-properties-common
 sudo apt -y update
 
 sudo apt -y install libtiff-dev
-sudo apt-get install libomp-dev
+sudo apt -y install libomp-dev
 sudo apt -y install libavcodec-dev libavformat-dev libswscale-dev libdc1394-dev
 sudo apt -y install libxine2-dev libv4l-dev
 cd /usr/include/linux
