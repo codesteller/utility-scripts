@@ -3,9 +3,9 @@
 cmake_version=3.27.0
 
 sudo apt update && sudo apt install locales -y
-sudo locale-gen en_US en_US.UTF-8
-sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
+sudo locale-gen en_IN en_IN.UTF-8
+sudo update-locale LC_ALL=en_IN.UTF-8 LANG=en_IN.UTF-8
+export LANG=en_IN.UTF-8
 
 sudo apt update && sudo apt upgrade -y
 sudo apt install build-essential software-properties-common git -y
@@ -26,7 +26,7 @@ sudo snap install btop
 
 # Install Python
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-bash Miniforge3-$(uname)-$(uname -m).sh -b -p "${HOME}/Apsoft/miniforge3
+bash Miniforge3-$(uname)-$(uname -m).sh -b -p "${HOME}/Apsoft/miniforge3"
 
 # Audio & Video Utils
 sudo apt install v4l-utils -y
