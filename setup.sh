@@ -16,7 +16,7 @@ tar -xvf cmake-${cmake_version}-linux-x86_64.tar.gz
 mkdir cmake && mv cmake-${cmake_version}-linux-x86_64 cmake/${cmake_version}
 sudo mv cmake /opt/
 echo 'export cmake_version=3.27.0' >> ~/.bashrc 
-echo 'export PATH=$PATH:/opt/cmake/${cmake_version}/bin' >> ~/.bashrc 
+echo 'export PATH=/opt/cmake/${cmake_version}/bin:$PATH' >> ~/.bashrc 
 
 # Audio & Video Utils
 sudo apt install v4l-utils -y
