@@ -27,6 +27,12 @@ sudo snap install btop
 # Install Python
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh -b -p "${HOME}/Apsoft/miniforge3"
+### Add path to bashrc
+echo "function env_conda()  {" | tee -a ~/.bashrc > /dev/null
+echo '    source "${HOME}/Apsoft/miniforge3/etc/profile.d/conda.sh"' | tee -a ~/.bashrc > /dev/null
+echo '    source "${HOME}/Apsoft/miniforge3/etc/profile.d/mamba.sh"' | tee -a ~/.bashrc > /dev/null
+echo '    mamba activate' | tee -a ~/.bashrc > /dev/null
+echo '} ' | tee -a ~/.bashrc > /dev/null
 
 # Audio & Video Utils
 sudo apt install v4l-utils -y
