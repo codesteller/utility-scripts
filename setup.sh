@@ -18,15 +18,19 @@ sudo mv -f cmake /opt/
 echo 'export cmake_version=3.27.0' >> ~/.bashrc 
 echo 'export PATH=/opt/cmake/${cmake_version}/bin:$PATH' >> ~/.bashrc 
 
+# Dev Utilities
+sudo apt install terminator tmux neofetch neovim openssh-server -y
+sudo snap install sublime-text --classic
+sudo snap install code --classic
+sudo snap install btop
+
+# Install Python
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3-$(uname)-$(uname -m).sh -b -p "${HOME}/Apsoft/miniforge3
+
 # Audio & Video Utils
 sudo apt install v4l-utils -y
 sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
   libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
   gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools \
   gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio -y
-
-# Dev Utilities
-sudo apt install terminator tmux neofetch neovim openssh-server -y
-sudo snap install sublime-text --classic
-sudo snap install code --classic
-sudo snap install btop
