@@ -14,7 +14,7 @@ sudo apt install build-essential software-properties-common git -y
 wget https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake-${cmake_version}-linux-x86_64.tar.gz
 tar -xvf cmake-${cmake_version}-linux-x86_64.tar.gz
 mkdir cmake && mv cmake-${cmake_version}-linux-x86_64 cmake/${cmake_version}
-sudo mv cmake /opt/
+sudo mv -f cmake /opt/
 echo 'export cmake_version=3.27.0' >> ~/.bashrc 
 echo 'export PATH=/opt/cmake/${cmake_version}/bin:$PATH' >> ~/.bashrc 
 
