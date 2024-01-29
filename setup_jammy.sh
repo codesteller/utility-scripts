@@ -18,6 +18,10 @@ sudo mv -f cmake /opt/
 echo 'export cmake_version=3.27.0' >> ~/.bashrc 
 echo 'export PATH=/opt/cmake/${cmake_version}/bin:$PATH' >> ~/.bashrc 
 
+# TO use CH40 drivers for Arduino and other US drivers, it is 
+# good idea to remove britty (Unless you are using a braille display)
+sudo apt remove brltty -y
+
 # Dev Utilities
 sudo apt install terminator tmux neofetch neovim openssh-server -y
 sudo snap install sublime-text --classic
