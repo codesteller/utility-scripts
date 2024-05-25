@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt update && sudo apt upgrade -y
+
 cmake_version=3.27.0
 
 sudo apt update && sudo apt install locales -y
