@@ -27,4 +27,4 @@ sudo apt install -y ros-humble-depthai-examples ros-humble-depthai-ros ros-humbl
 sudo apt install -y ros-humble-velodyne 
 
 # ros2 launch ublox_gps ublox_gps_node-composed-launch.py
-echo "function rosdev()    {\n    source /opt/ros/humble/setup.bash\n}" | sudo tee ${HOME}/.bashrc > /dev/null
+echo -e "function rosdev()    {\n    source /opt/ros/humble/setup.bash\n}" | tee -a ${HOME}/.bashrc > /dev/null
