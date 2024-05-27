@@ -1,4 +1,7 @@
 # Save current working directory
+cv2_dir=${HOME}/Apsoft/cv2/
+mkdir "$cv2_dir"
+cd $cv2_dir
 cv_version="4.8.1"
 
 cwd=$(pwd)
