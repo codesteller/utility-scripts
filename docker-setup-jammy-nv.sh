@@ -39,5 +39,5 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 
 #### Test nvidia-smi with the latest official CUDA image
-sudo docker run --gpus all nvcr.io/nvidia/cuda:11.8.0-devel-ubuntu20.04 nvidia-smi
+sudo docker run --gpus all nvcr.io/nvidia/cuda:latest nvidia-smi
 sudo docker run --rm ubuntu:latest uname -a
