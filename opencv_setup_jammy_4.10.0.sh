@@ -2,7 +2,7 @@
 cv2_dir=${HOME}/Apsoft/cv2/
 mkdir "$cv2_dir"
 cd $cv2_dir
-cv_version="4.9.0"
+cv_version="4.10.0"
 
 cwd=$(pwd)
 
@@ -11,7 +11,7 @@ sudo apt -y upgrade
 
 ## Install dependencies
 sudo apt -y install build-essential checkinstall cmake pkg-config yasm
-sudo apt -y install git gfortran
+sudo apt -y install git gfortran flake8 pylint
 sudo apt -y install libjpeg8-dev libpng-dev
  
 sudo apt -y install software-properties-common
