@@ -30,6 +30,9 @@ sudo snap install sublime-text --classic
 sudo snap install code --classic
 sudo snap install btop
 
+# Base Python
+sudo apt install python3-dev python3-pip python3-venv
+
 # Install Python
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh -b -p "${HOME}/Apsoft/miniforge3"
