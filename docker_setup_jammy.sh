@@ -29,4 +29,4 @@ sudo systemctl restart docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
 # Test Docker setup
-sudo docker run --rm ubuntu:latest bash -c "uname -a && lsb_release -a"
+sudo docker run --rm ubuntu:latest bash -c "uname -a"
