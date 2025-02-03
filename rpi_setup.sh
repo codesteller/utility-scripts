@@ -3,7 +3,7 @@ sudo apt update && sudo apt -y upgrade
 
 # Download and Install CMake
 cmake_version=3.29.9
-wget "https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake-${cmake_version}-linux-${uname -m}.tar.gz"
+wget "https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake-${cmake_version}-linux-$(uname -m).tar.gz"
 tar -xvf cmake-${cmake_version}-linux-x86_64.tar.gz
 mkdir cmake && mv cmake-${cmake_version}-linux-x86_64 cmake/${cmake_version}
 sudo mv -f cmake /opt/
