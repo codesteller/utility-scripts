@@ -29,6 +29,3 @@ echo '} ' | tee -a ~/.bashrc > /dev/null
 
 # Dev Utilities
 sudo apt install terminator tmux neofetch neovim openssh-server -y
-sudo snap install sublime-text --classic
-sudo snap install code --classic
-sudo snap install btop
