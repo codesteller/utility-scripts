@@ -26,3 +26,9 @@ echo '    source "${HOME}/Apsoft/miniforge3/etc/profile.d/conda.sh"' | tee -a ~/
 echo '    source "${HOME}/Apsoft/miniforge3/etc/profile.d/mamba.sh"' | tee -a ~/.bashrc > /dev/null
 echo '    mamba activate' | tee -a ~/.bashrc > /dev/null
 echo '} ' | tee -a ~/.bashrc > /dev/null
+
+# Dev Utilities
+sudo apt install terminator tmux neofetch neovim openssh-server -y
+sudo snap install sublime-text --classic
+sudo snap install code --classic
+sudo snap install btop
