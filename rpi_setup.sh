@@ -17,6 +17,10 @@ sudo apt remove brltty -y
 # Base Python
 sudo apt install -y python3-dev python3-pip python3-venv
 
+# Development Tools
+sudo apt install -y terminator tmux neofetch neovim openssh-server
+sudo apt install -y git code 
+
 # Install Mamba/Conda Python
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh -b -p "${HOME}/Apsoft/miniforge3"
@@ -27,5 +31,4 @@ echo '    source "${HOME}/Apsoft/miniforge3/etc/profile.d/mamba.sh"' | tee -a ~/
 echo '    mamba activate' | tee -a ~/.bashrc > /dev/null
 echo '} ' | tee -a ~/.bashrc > /dev/null
 
-# Dev Utilities
-sudo apt install terminator tmux neofetch neovim openssh-server -y
+
