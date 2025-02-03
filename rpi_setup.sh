@@ -7,7 +7,7 @@ wget "https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake
 tar -xvf "cmake-${cmake_version}-linux-$(uname -m).tar.gz"
 mkdir cmake && mv "cmake-${cmake_version}-linux-$(uname -m)" cmake/${cmake_version}
 sudo mv -f cmake /opt/
-echo 'export cmake_version=3.27.0' >> ~/.bashrc 
+echo 'export cmake_version=3.29.9' >> ~/.bashrc 
 echo 'export PATH=/opt/cmake/${cmake_version}/bin:$PATH' >> ~/.bashrc 
 
 # TO use CH40 drivers for Arduino and other US drivers, it is 
