@@ -2,7 +2,7 @@
 
 sudo apt update && sudo apt upgrade -y
 
-cmake_version=3.27.0
+cmake_version=3.31.5
 
 sudo apt update && sudo apt install locales -y
 sudo locale-gen en_IN en_IN.UTF-8
@@ -17,7 +17,7 @@ wget https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake-
 tar -xvf cmake-${cmake_version}-linux-x86_64.tar.gz
 mkdir cmake && mv cmake-${cmake_version}-linux-x86_64 cmake/${cmake_version}
 sudo mv -f cmake /opt/
-echo 'export cmake_version=3.27.0' >> ~/.bashrc 
+echo 'export cmake_version=3.31.5' >> ~/.bashrc 
 echo 'export PATH=/opt/cmake/${cmake_version}/bin:$PATH' >> ~/.bashrc 
 
 # TO use CH40 drivers for Arduino and other US drivers, it is 
