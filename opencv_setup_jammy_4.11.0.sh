@@ -2,7 +2,7 @@
 cv2_dir=${HOME}/Apsoft/cv2/
 mkdir "$cv2_dir"
 cd $cv2_dir
-cv_version="4.10.0"
+cv_version="4.11.0"
 
 cwd=$(pwd)
 
@@ -98,12 +98,12 @@ cmake \
     -D PYTHON_EXECUTABLE=$(which python3) \
     -D BUILD_EXAMPLES=ON ..
 
-# make -j$(nproc)
-# sudo make install
+make -j$(nproc)
+sudo make install
 
 # Now Add the Paths
 # export LD_LIBRARY_PATH=/opt/opencv/${cv_version}/install/lib:$LD_LIBRARY_PATH
-# export PYTHONPATH=/optopencv/${cv_version}/install/lib/python3.x/site-packages:$PYTHONPATH"
+# export PYTHONPATH=/opt/opencv/${cv_version}/install/lib/python3.x/site-packages:$PYTHONPATH"
 
 # Post Installation Steps
 # 1. Add library to paths
@@ -111,5 +111,11 @@ cmake \
 #       - Add the sudo nano /etc/ld.so.conf.d/opencv.conf
 # 2. Add Package Config
 #       - Find the path to add - find /opt/opencv/ -name *.pc
-#       - echo 'export PKG_CONFIG_PATH="/opt/opencv/4.9.0/lib/pkgconfig/:$PKG_CONFIG_PATH"' >> ~/.bashrc
+#       - echo 'export PKG_CONFIG_PATH="/opt/opencv/4.10.0/lib/pkgconfig/:$PKG_CONFIG_PATH"' >> ~/.bashrc
 #       - export PKG_CONFIG_PATH=:$PKG_CONFIG_PATH
+
+
+# Install NV VIDEO CODEC SDK
+# Download and place lib and include files in CUDA directory
+
+# ./configure --enable-nonfree --enable-cuda-nvcc --enable-libnpp --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64 --disable-static --enable-shared --disable-x86asm
