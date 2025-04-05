@@ -2,7 +2,7 @@
 
 sudo apt update && sudo apt upgrade -y
 
-cmake_version=3.27.0
+cmake_version=3.31.5
 
 sudo apt update && sudo apt install locales -y
 sudo locale-gen en_IN en_IN.UTF-8
