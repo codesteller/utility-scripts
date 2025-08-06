@@ -1,0 +1,15 @@
+#!/bin/bash
+
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin
+sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2404-12-8-local_12.8.0-570.86.10-1_amd64.deb
+sudo cp /var/cuda-repo-ubuntu2404-12-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-12-8
+
+# available at https://developer.nvidia.com/cuda-downloads
+# IF You’re using a newer NVIDIA GPU (Ampere, Turing, or newer – e.g., RTX 30/40 series, install nvidia-open
+# for You're using an older NVIDIA GPU (e.g., GTX 10 series or older). install cuda-drivers
+sudo apt-get install -y nvidia-open
+# sudo apt-get install -y cuda-drivers
