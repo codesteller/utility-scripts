@@ -21,4 +21,7 @@ sudo apt update && sudo apt install -y ros-dev-tools
 
 sudo apt update && sudo apt upgrade -y
 
-sudo apt install -y ros-rolling-desktop-full
+sudo apt install -y ros-jazzy-desktop-full
+
+# If needs lastest unstable version, then install rolling ridley
+# sudo apt install -y ros-rolling-desktop-full 
