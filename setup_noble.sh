@@ -30,6 +30,9 @@ sudo snap install sublime-text --classic
 sudo snap install code --classic
 sudo snap install btop
 
+# Mono for TI Radar
+sudo apt-get --assume-yes install mono-complete
+
 # Base Python
 sudo apt install -y python3-dev python3-pip python3-venv
 
