@@ -30,6 +30,7 @@ sudo snap install sublime-text --classic
 sudo snap install code --classic
 sudo snap install btop
 sudo apt install -y fonts-roboto fonts-dejavu
+sudo apt install -y clang ninja-build libgtk-3-dev mesa-utils
 
 # Mono for TI Radar
 sudo apt-get --assume-yes install mono-complete
