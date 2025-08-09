@@ -29,6 +29,7 @@ sudo apt install terminator tmux neofetch neovim openssh-server -y
 sudo snap install sublime-text --classic
 sudo snap install code --classic
 sudo snap install btop
+sudo apt install -y fonts-roboto fonts-dejavu
 
 # Mono for TI Radar
 sudo apt-get --assume-yes install mono-complete
