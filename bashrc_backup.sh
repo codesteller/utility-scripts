@@ -1,3 +1,6 @@
+# --------------------------------------------------------------------------------
+#               USER DEFINED PATHS, VARIABLES & FUNCTIONS
+# --------------------------------------------------------------------------------
 
 # ---------------- PATHS & VARS ----------------------------
 
@@ -11,7 +14,6 @@ export HSA_OVERRIDE_GFX_VERSION=10.3.0
 # export ROCM_PATH=/opt/rocm
 
 function clear_deb_error()  {
-
     sudo chown -Rv _apt:root /var/cache/apt/archives/partial/
     sudo chmod -Rv 700 /var/cache/apt/archives/partial/
 }
@@ -47,6 +49,13 @@ function mmwave_dev()   {
     then
         sudo chmod 666 /dev/ttyACM0
         sudo chmod 666 /dev/ttyACM1
+        MMWAVE_ROOT=${HOME}/ti/mmwave_sdk_03_06_02_00-LTS/packages/scripts/unix/
+        cwd=${PWD}
+        cd $MMWAVE_ROOT
+        source setenv.sh
+        cd ${cwd}
+        PS1=[mmWave]$PS1
+        mmwave_flag=1
     fi
 }
 
