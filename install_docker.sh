@@ -22,7 +22,7 @@ sudo usermod -aG docker $USER
 # Test Docker
 sudo docker run --rm ubuntu:latest uname -a
 
-# # NVIDIA Docker for Ubuntu 22.04, Debian Buster
+# # NVIDIA Docker for Ubuntu 24.04
 # Add the package repositories
 curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
   && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
