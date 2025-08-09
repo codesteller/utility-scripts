@@ -9,7 +9,7 @@ sudo apt install -y unzip wget curl openjdk-17-jdk git
 
 echo "=== Installing Flutter SDK ==="
 cd ~
-FLUTTER_VERSION="3.24.1"
+FLUTTER_VERSION="3.32.8"
 wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz
 tar xf flutter_linux_${FLUTTER_VERSION}-stable.tar.xz
 rm flutter_linux_${FLUTTER_VERSION}-stable.tar.xz
@@ -36,15 +36,16 @@ fi
 export ANDROID_HOME=$HOME/Android
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
 
-echo "=== Installing Android SDK Packages ==="
+echo "=== Installing Android SDK Packages (36) ==="
+sdk_pack=36
 yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses
-sdkmanager --install "platform-tools" "platforms;android-34" "build-tools;34.0.0" "emulator" "system-images;android-34;google_apis;x86_64"
+sdkmanager --install "platform-tools" "platforms;android-${sdk_pack}" "build-tools;${sdk_pack}.0.0" "emulator" "system-images;android-${sdk_pack};google_apis;x86_64"
 
 echo "=== Creating Android Emulator (Pixel_API_34) ==="
 echo "no" | avdmanager create avd -n Pixel_API_34 -k "system-images;android-34;google_apis;x86_64" --device "pixel"
 
 echo "=== Running Flutter Doctor ==="
-flutter doctor
+flutter doctor -v
 
 echo
 echo "=== Setup Complete ==="
