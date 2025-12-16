@@ -30,4 +30,7 @@ sudo apt install -y python3-dev python3-pip python3-venv
 sudo apt install -y v4l-utils ffmpeg
 
 # Install ROS Humble
+curl -sL https://raw.githubusercontent.com/codesteller/utility-scripts/refs/heads/master/install-ros-humble-jammy.sh | bash
 
+# Install Docker
+curl -sL https://raw.githubusercontent.com/codesteller/utility-scripts/refs/heads/master/docker_setup_jammy.sh | bash
