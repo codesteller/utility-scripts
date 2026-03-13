@@ -38,15 +38,15 @@ sudo apt-get --assume-yes install mono-complete
 # Base Python
 sudo apt install -y python3-dev python3-pip python3-venv
 
-# Install Python
-wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-bash Miniforge3-$(uname)-$(uname -m).sh -b -p "${HOME}/Apsoft/miniforge3"
+## Install Python
+#wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+#bash Miniforge3-$(uname)-$(uname -m).sh -b -p "${HOME}/Apsoft/miniforge3"
 ### Add path to bashrc
-echo "function env_conda()  {" | tee -a ~/.bashrc > /dev/null
-echo '    source "${HOME}/Apsoft/miniforge3/etc/profile.d/conda.sh"' | tee -a ~/.bashrc > /dev/null
-echo '    source "${HOME}/Apsoft/miniforge3/etc/profile.d/mamba.sh"' | tee -a ~/.bashrc > /dev/null
-echo '    mamba activate' | tee -a ~/.bashrc > /dev/null
-echo '} ' | tee -a ~/.bashrc > /dev/null
+#echo "function env_conda()  {" | tee -a ~/.bashrc > /dev/null
+#echo '    source "${HOME}/Apsoft/miniforge3/etc/profile.d/conda.sh"' | tee -a ~/.bashrc > /dev/null
+#echo '    source "${HOME}/Apsoft/miniforge3/etc/profile.d/mamba.sh"' | tee -a ~/.bashrc > /dev/null
+#echo '    mamba activate' | tee -a ~/.bashrc > /dev/null
+#echo '} ' | tee -a ~/.bashrc > /dev/null
 
 # Audio & Video Utils
 sudo apt install -y v4l-utils ffmpeg
