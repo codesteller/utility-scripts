@@ -48,6 +48,9 @@ sudo apt install -y python3-dev python3-pip python3-venv
 #echo '    mamba activate' | tee -a ~/.bashrc > /dev/null
 #echo '} ' | tee -a ~/.bashrc > /dev/null
 
+## Setup UV Astral
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Audio & Video Utils
 sudo apt install -y v4l-utils ffmpeg
 sudo apt install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
