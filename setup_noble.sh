@@ -25,7 +25,7 @@ echo 'export PATH=/opt/cmake/${cmake_version}/bin:$PATH' >> ~/.bashrc
 sudo apt remove brltty -y
 
 # Dev Utilities
-sudo apt install terminator tmux neofetch neovim openssh-server -y
+sudo apt install terminator tmux neofetch neovim openssh-server wget curl -y
 sudo snap install sublime-text --classic
 sudo snap install code --classic
 sudo snap install btop
