@@ -22,7 +22,7 @@ sudo apt -y install x264 v4l-utils
 sudo apt -y install libprotobuf-dev protobuf-compiler
 sudo apt -y install libgoogle-glog-dev libgflags-dev
 sudo apt -y install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen flake8 pylint
-
+sudo apt -y install gcc-12 g++-12
 
 # Git clone OpenCV and OpenCV contrib repositories
 git clone --branch ${open_cv_version} https://github.com/opencv/opencv.git
