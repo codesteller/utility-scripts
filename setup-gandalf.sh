@@ -29,7 +29,8 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install build-essential ninja-build pkg-config gdb \
     git curl wget unzip htop nvtop jq gh ca-certificates gnupg lsb-release \
-    software-properties-common python3-venv python3-pip zsh
+    software-properties-common python3-venv python3-pip zsh fonts-powerline \
+    fonts-noto-color-emoji fonts-firacode
 
 step "Setting up zsh with Oh My Zsh"
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -41,10 +42,29 @@ ZSH_PLUGINS="$HOME/.oh-my-zsh/custom/plugins"
     git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS/zsh-autosuggestions"
 [ -d "$ZSH_PLUGINS/zsh-syntax-highlighting" ] || \
     git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_PLUGINS/zsh-syntax-highlighting"
+# Custom apple theme: penguin instead of the Apple logo, plus user@host
+mkdir -p "$HOME/.oh-my-zsh/custom/themes"
+sed -e 's/\xEF\xA3\xBF/🐧/' \
+    -e 's/\$(toon)%{\$reset_color%} %~\//$(toon)%{$reset_color%} %K{238}%F{252} %n@%m %~\/ %f%k/' \
+    "$HOME/.oh-my-zsh/themes/apple.zsh-theme" > "$HOME/.oh-my-zsh/custom/themes/apple.zsh-theme"
+sed -i 's/^ZSH_THEME=.*/ZSH_THEME="apple"/' "$HOME/.zshrc"
 # zsh-syntax-highlighting has to stay last in this list
 sed -i 's/^plugins=(.*/plugins=(git docker docker-compose sudo z zsh-autosuggestions zsh-syntax-highlighting)/' "$HOME/.zshrc"
 add_line "$HOME/.zshrc" 'export PATH=$HOME/.local/bin:$PATH'
+add_line "$HOME/.zshrc" '# Sober command colours for zsh-syntax-highlighting'
+for style in command builtin alias function precommand; do
+    add_line "$HOME/.zshrc" "ZSH_HIGHLIGHT_STYLES[$style]='fg=110'"
+done
+add_line "$HOME/.zshrc" "ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=174'"
 sudo chsh -s "$(command -v zsh)" "$USER"
+
+# Fira Code 12 in the default GNOME Terminal profile, skipped without a desktop
+profile="$(gsettings get org.gnome.Terminal.ProfilesList default 2>/dev/null | tr -d "'" || true)"
+if [ -n "$profile" ]; then
+    schema="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/"
+    gsettings set "$schema" font 'Fira Code 12'
+    gsettings set "$schema" use-system-font false
+fi
 
 step "Adding CMake from /opt to bash and zsh"
 add_to_shells "export cmake_version=${CMAKE_VERSION}"
@@ -130,6 +150,8 @@ check() {
 }
 check "zsh default shell"    test "$(getent passwd "$USER" | cut -d: -f7)" = "$(command -v zsh)"
 check "Oh My Zsh"            test -f "$HOME/.oh-my-zsh/oh-my-zsh.sh"
+check "Powerline font"       dpkg -s fonts-powerline
+check "Custom zsh prompt"    grep -q '🐧' "$HOME/.oh-my-zsh/custom/themes/apple.zsh-theme"
 check "uv"                   test -x "$UV"
 check "CMake in /opt"      test -x "/opt/cmake/${CMAKE_VERSION}/bin/cmake"
 check "CUDA compiler"      test -x "/usr/local/cuda-${CUDA_VERSION}/bin/nvcc"
