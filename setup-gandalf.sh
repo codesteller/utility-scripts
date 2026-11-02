@@ -110,6 +110,9 @@ add_line "$HOME/.zshrc" '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 
 step "Creating Python ML environment at ${ML_VENV}"
 UV="$(command -v uv || echo "$HOME/.local/bin/uv")"
+if [ ! -x "$UV" ]; then
+    curl -fsSL https://astral.sh/uv/install.sh | sh
+fi
 "$UV" venv --allow-existing --python 3.12 "$ML_VENV"
 "$UV" pip install --python "$ML_VENV/bin/python" \
     torch torchvision tensorrt onnx opencv-python-headless numpy jupyterlab
@@ -127,7 +130,8 @@ check() {
 }
 check "zsh default shell"    test "$(getent passwd "$USER" | cut -d: -f7)" = "$(command -v zsh)"
 check "Oh My Zsh"            test -f "$HOME/.oh-my-zsh/oh-my-zsh.sh"
-check "CMake in /opt"        test -x "/opt/cmake/${CMAKE_VERSION}/bin/cmake"
+check "uv"                   test -x "$UV"
+check "CMake in /opt"      test -x "/opt/cmake/${CMAKE_VERSION}/bin/cmake"
 check "CUDA compiler"      test -x "/usr/local/cuda-${CUDA_VERSION}/bin/nvcc"
 check "Docker GPU access"    sudo docker run --rm --gpus all ubuntu:24.04 nvidia-smi
 check "ROS 2 Jazzy"          test -f /opt/ros/jazzy/setup.bash
