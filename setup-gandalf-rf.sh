@@ -5,13 +5,13 @@
 # CMake in /opt, git, gh and uv.
 #
 # Installs:
-#   openEMS v0.37.0 + CSXCAD (built from source into ~/opt/openEMS)
+#   openEMS v0.37.0 + CSXCAD (built from source into ~/Apsoft/openEMS)
 #   Python env ~/venvs/rf: openEMS/CSXCAD modules, EMerge, scikit-rf, PyVISA, PyVista,
 #     gmsh, h5py, NumPy/SciPy/Matplotlib, JupyterLab, Black, ruff, pre-commit, pytest
 #   Palace (Apptainer image), gerber2ems (Docker image), gerbv, git-lfs
 #   FreeCAD and Qucs-S (AppImages), ParaView (official tarball in /opt), KiKit (pipx)
 # Also stops ROS 2 from loading in every shell (it leaks PYTHONPATH into venvs) and
-# adds an "ros" alias instead.
+# adds a "ros" shell function that loads it on demand and prefixes the prompt with (ROS).
 #
 # Run as your normal user, not with sudo:  bash setup-rf.sh
 # Safe to re-run: finished steps are detected and skipped.
@@ -20,11 +20,19 @@ set -euo pipefail
 # ---- Versions and paths ------------------------------------------------------
 CMAKE_VERSION=3.30.0                      # same as setup-gandalf.sh
 OPENEMS_TAG=v0.37.0
-OPENEMS_PREFIX="$HOME/opt/openEMS"
+# Everything this script installs under your home lives in one folder, ~/Apsoft:
+#   Apps     AppImages (FreeCAD, Qucs-S)
+#   Sif      Apptainer container images (Palace)
+#   Src      source checkouts (openEMS-Project, gerber2ems)
+#   openEMS  openEMS + CSXCAD install prefix (binaries, libraries)
+# The Python env stays in ~/venvs next to the ml env from setup-gandalf.sh.
+# ParaView goes to /opt, outside home.
+APSOFT="$HOME/Apsoft"
+APPS="$APSOFT/Apps"
+SIF_DIR="$APSOFT/Sif"
+SRC="$APSOFT/Src"
+OPENEMS_PREFIX="$APSOFT/openEMS"
 RF_VENV="$HOME/venvs/rf"
-SRC="$HOME/src"
-SIF_DIR="$HOME/sif"
-APPS="$HOME/Applications"
 PALACE_IMAGE="oras://ghcr.io/volkermuehlhaus/palace_0181:latest"   # community image, learning only
 FREECAD_TAG=1.1.1
 QUCS_TAG=26.1.1
@@ -66,7 +74,7 @@ if [ ! -x "$UV" ]; then
 fi
 
 # ---- 1. Keep ROS 2 out of every shell ------------------------------------------
-step "Making ROS 2 load only on demand (alias: ros)"
+step "Making ROS 2 load only on demand (shell function: ros)"
 for rc in "$HOME/.bashrc" "$HOME/.zshrc"; do
     [ -f "$rc" ] || continue
     if grep -qE '^source /opt/ros/jazzy/setup\.(bash|zsh)$' "$rc"; then
@@ -75,10 +83,45 @@ for rc in "$HOME/.bashrc" "$HOME/.zshrc"; do
         echo "Removed global ROS source line from $rc (backup: $rc.bak-setup-rf)"
     fi
 done
-add_line "$HOME/.bashrc" "alias ros='source /opt/ros/jazzy/setup.bash'"
-add_line "$HOME/.zshrc" "alias ros='source /opt/ros/jazzy/setup.zsh'"
+# Drop the plain alias written by an earlier version of this script.
+for rc in "$HOME/.bashrc" "$HOME/.zshrc"; do
+    [ -f "$rc" ] && sed -i -E "/^alias ros='source \/opt\/ros\/jazzy\/setup\.(bash|zsh)'$/d" "$rc"
+done
+
+# add_ros_function <rc file> <setup script extension: bash|zsh>
+# Appends a "ros" shell function once (guarded by a marker comment). The function:
+#   - sources ROS 2 Jazzy only the first time it is called in a shell (_ROS_ON marker),
+#   - prefixes the prompt with "(ROS) " only if the prompt does not already start with it,
+#     so calling ros twice never gives "(ROS) (ROS) ".
+# In zsh, PS1 and PROMPT are the same variable, so this also works with the Oh My Zsh theme.
+add_ros_function() {
+    local rc="$1" ext="$2"
+    touch "$rc"
+    grep -qF '# >>> ros function (setup-rf.sh) >>>' "$rc" && return 0
+    cat >> "$rc" << EOF
+
+# >>> ros function (setup-rf.sh) >>>
+# Load ROS 2 Jazzy on demand and mark the prompt. Safe to call more than once.
+ros() {
+    if [ -n "\${VIRTUAL_ENV:-}" ]; then
+        echo "ros: note, a Python venv is active (\$VIRTUAL_ENV); ROS paths will mix into it." >&2
+    fi
+    if [ -z "\${_ROS_ON:-}" ]; then
+        source /opt/ros/jazzy/setup.${ext} || return 1
+        export _ROS_ON=1
+    fi
+    case "\$PS1" in
+        "(ROS) "*) ;;
+        *) PS1="(ROS) \$PS1" ;;
+    esac
+}
+# <<< ros function (setup-rf.sh) <<<
+EOF
+}
+add_ros_function "$HOME/.bashrc" bash
+add_ros_function "$HOME/.zshrc" zsh
 echo "NOTE: setup-gandalf.sh lines 115-116 add the global source lines back if re-run;"
-echo "      replace them with the two alias lines above."
+echo "      delete those two lines from setup-gandalf.sh."
 
 # ---- 2. System packages --------------------------------------------------------
 step "Installing build dependencies, gerbv, git-lfs, pipx and Apptainer"
@@ -222,6 +265,7 @@ check() {
 }
 py="$RF_VENV/bin/python"
 check "ROS not sourced globally"   bash -c "! grep -qE '^source /opt/ros/jazzy' '$HOME/.bashrc' '$HOME/.zshrc'"
+check "ros function in bash/zsh"   bash -c "grep -qF '# >>> ros function' '$HOME/.bashrc' && grep -qF '# >>> ros function' '$HOME/.zshrc'"
 check "openEMS binary"             test -x "$OPENEMS_PREFIX/bin/openEMS"
 check "openEMS + CSXCAD in Python" bash -c "cd / && '$py' -c 'import openEMS, CSXCAD; openEMS.openEMS(); CSXCAD.ContinuousStructure()'"
 check "EMerge"                     bash -c "cd / && '$py' -c 'import emerge'"
