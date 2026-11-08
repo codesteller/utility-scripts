@@ -306,10 +306,11 @@ ZSH_PLUGINS="$HOME/.oh-my-zsh/custom/plugins"
     git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS/zsh-autosuggestions"
 [ -d "$ZSH_PLUGINS/zsh-syntax-highlighting" ] || \
     git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_PLUGINS/zsh-syntax-highlighting"
-# Custom apple theme: penguin instead of the Apple logo, plus user@host
+# Custom apple theme: penguin instead of the Apple logo, then user@host: path/ > in
+# Solarized colours (green user@host, blue path) on a Solarized base02 box.
 mkdir -p "$HOME/.oh-my-zsh/custom/themes"
 sed -e 's/\xEF\xA3\xBF/🐧/' \
-    -e 's/\$(toon)%{\$reset_color%} %~\//$(toon)%{$reset_color%} %K{238}%F{252} %n@%m: %~\/ > %f%k/' \
+    -e 's/\$(toon)%{\$reset_color%} %~\//$(toon)%{$reset_color%}%K{#073642} %F{#859900}%n@%m%F{#93a1a1}: %F{#268bd2}%~\/%F{#93a1a1} > %f%k/' \
     "$HOME/.oh-my-zsh/themes/apple.zsh-theme" > "$HOME/.oh-my-zsh/custom/themes/apple.zsh-theme"
 sed -i 's/^ZSH_THEME=.*/ZSH_THEME="apple"/' "$HOME/.zshrc"
 # zsh-syntax-highlighting has to stay last in this list
