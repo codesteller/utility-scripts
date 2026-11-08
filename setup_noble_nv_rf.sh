@@ -162,6 +162,22 @@ sudo apt-get -y install locales build-essential ninja-build pkg-config gdb clang
     gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x \
     gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 
+step "Starting Terminator without IBus (fixes doubled characters in Broadcast all)"
+# With IBus, every key typed in "Broadcast all" arrives twice in the other terminals.
+# GTK's built-in input method avoids it. The wrapper covers shells, the app menu and
+# Ctrl+Alt+T (which otherwise runs /usr/bin/terminator through x-terminal-emulator).
+mkdir -p "$HOME/.local/bin" "$HOME/.local/share/applications"
+cat > "$HOME/.local/bin/terminator" << 'EOF'
+#!/bin/sh
+# Written by setup_noble_nv_rf.sh. With IBus, Terminator's "Broadcast all" types each
+# character twice in the other terminals; GTK's built-in input method avoids that.
+exec env GTK_IM_MODULE=gtk-im-context-simple /usr/bin/terminator "$@"
+EOF
+chmod 755 "$HOME/.local/bin/terminator"
+sed -e "s|^Exec=terminator|Exec=$HOME/.local/bin/terminator|" -e "s|^TryExec=terminator|TryExec=/usr/bin/terminator|" \
+    /usr/share/applications/terminator.desktop > "$HOME/.local/share/applications/terminator.desktop"
+gsettings set org.gnome.desktop.default-applications.terminal exec "$HOME/.local/bin/terminator" 2>/dev/null || true
+
 step "Setting locale to en_IN.UTF-8"
 sudo locale-gen en_IN en_IN.UTF-8 > /dev/null
 sudo update-locale LC_ALL=en_IN.UTF-8 LANG=en_IN.UTF-8
@@ -740,6 +756,7 @@ check() {
 check "zsh default shell"    test "$(getent passwd "$USER" | cut -d: -f7)" = "$(command -v zsh)"
 check "Oh My Zsh"            test -f "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 check "Custom zsh prompt"    grep -q '🐧' "$HOME/.oh-my-zsh/custom/themes/apple.zsh-theme"
+check "Terminator without IBus" grep -qF gtk-im-context-simple "$HOME/.local/bin/terminator"
 check "zsh starts cleanly"   bash -c "out=\$(zsh -i -c 'echo \$ZSH_THEME' 2>&1 < /dev/null) && [ \"\$out\" = apple ]"
 check "CMake in /opt"        test -x "$CMAKE_DIR/bin/cmake"
 check "uv"                   test -x "$UV"
